@@ -100,6 +100,9 @@
         }
       }
     },
+    "Assets" : {
+
+    },
     "Cancel" : {
       "comment" : "Button title indicating that the operation should be cancelled",
       "localizations" : {
@@ -310,6 +313,7 @@
     },
     "Name" : {
       "comment" : "Placeholder title for the Name field in a form",
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -365,6 +369,12 @@
           }
         }
       }
+    },
+    "Overview" : {
+
+    },
+    "Portfolio" : {
+
     },
     "Powered by [Skip](https://skip.tools)" : {
       "comment" : "Link markdown text for the Powered by… label",
@@ -452,6 +462,9 @@
           }
         }
       }
+    },
+    "Stocks" : {
+
     },
     "System" : {
       "comment" : "Menu item indicating that the appearance should be in the default system mode",

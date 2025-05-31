@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Asset:Identifiable {
+class YWAsset:Identifiable {
     let id = UUID()
     var ticker: String //Ticker should always be unique
     var name: String

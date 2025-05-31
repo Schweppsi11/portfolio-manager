@@ -1,12 +1,11 @@
 import SwiftUI
 
 enum ContentTab: String, Hashable {
-    case welcome, home, settings
+    case home, portfolio, stocks, settings
 }
 
 struct YWMainScreen: View {
-    @AppStorage("tab") var tab = ContentTab.welcome
-    @AppStorage("name") var welcomeName = "Skipper"
+    @AppStorage("tab") var tab = ContentTab.home
     @AppStorage("appearance") var appearance = ""
     @State var viewModel = ViewModel()
 
@@ -20,7 +19,24 @@ struct YWMainScreen: View {
             .tag(ContentTab.home)
 
             NavigationStack {
-                SettingsView(appearance: $appearance, welcomeName: $welcomeName)
+                let assets: Array<YWAsset> = [YWAsset(ticker: "AAPL", name: "Apple", value: 325.00, oldValue: 300),
+                                            YWAsset(ticker: "MSFT", name: "Microsoft", value: 541.00, oldValue: 643.00),
+                                            YWAsset(ticker: "DNG", name: "Dynacor Mining", value:954.30, oldValue: 899.00)]
+                let portfolio = YWPortfolio(name: "MyPortfolio", assets: assets)
+                YWPortfolioView(portfolio: portfolio)
+                    .navigationTitle("Portfolio")
+            }
+            .tabItem { Label("Portfolio", systemImage: "briefcase.fill") }
+            .tag(ContentTab.portfolio)
+            
+            NavigationStack {
+                Text("Stocks")
+            }
+            .tabItem { Label("Stocks", systemImage: "dollarsign.arrow.trianglehead.counterclockwise.rotate.90") }
+            .tag(ContentTab.stocks)
+            
+            NavigationStack {
+                SettingsView(appearance: $appearance)
                     .navigationTitle("Settings")
             }
             .tabItem { Label("Settings", systemImage: "gearshape.fill") }
@@ -108,11 +124,9 @@ struct ItemView : View {
 
 struct SettingsView : View {
     @Binding var appearance: String
-    @Binding var welcomeName: String
 
     var body: some View {
         Form {
-            TextField("Name", text: $welcomeName)
             Picker("Appearance", selection: $appearance) {
                 Text("System").tag("")
                 Text("Light").tag("light")

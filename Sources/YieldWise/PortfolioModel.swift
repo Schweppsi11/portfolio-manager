@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Portfolio {
+struct YWPortfolio {
     var totalValue: Double
     {
         var value = 0.0
@@ -25,7 +25,7 @@ struct Portfolio {
         let totalValuePreChange = totalChange + totalValue
         return totalChange / totalValuePreChange * 100
     }
-    var assets: [Asset]
+    var assets: [YWAsset]
 }
 
 

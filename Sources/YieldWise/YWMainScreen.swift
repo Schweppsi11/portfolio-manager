@@ -4,7 +4,7 @@ enum ContentTab: String, Hashable {
     case welcome, home, settings
 }
 
-struct ContentView: View {
+struct YWMainScreen: View {
     @AppStorage("tab") var tab = ContentTab.welcome
     @AppStorage("name") var welcomeName = "Skipper"
     @AppStorage("appearance") var appearance = ""
@@ -12,12 +12,6 @@ struct ContentView: View {
 
     var body: some View {
         TabView(selection: $tab) {
-            NavigationStack {
-                WelcomeView(welcomeName: $welcomeName)
-            }
-            .tabItem { Label("Welcome", systemImage: "heart.fill") }
-            .tag(ContentTab.welcome)
-
             NavigationStack {
                 ItemListView()
                     .navigationTitle(Text("\(viewModel.items.count) Items"))
@@ -34,24 +28,6 @@ struct ContentView: View {
         }
         .environment(viewModel)
         .preferredColorScheme(appearance == "dark" ? .dark : appearance == "light" ? .light : nil)
-    }
-}
-
-struct WelcomeView : View {
-    @State var heartBeating = false
-    @Binding var welcomeName: String
-
-    var body: some View {
-        VStack(spacing: 0) {
-            Text("Hello [\(welcomeName)](https://skip.tools)!")
-                .padding()
-            Image(systemName: "heart.fill")
-                .foregroundStyle(.red)
-                .scaleEffect(heartBeating ? 1.5 : 1.0)
-                .animation(.easeInOut(duration: 1).repeatForever(), value: heartBeating)
-                .onAppear { heartBeating = true }
-        }
-        .font(.largeTitle)
     }
 }
 

@@ -88,6 +88,18 @@
         }
       }
     },
+    "AppSlogan" : {
+      "comment" : "Show in the welcome screen as subtitle",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Optimize. Diversify. Grow."
+          }
+        }
+      }
+    },
     "Cancel" : {
       "comment" : "Button title indicating that the operation should be cancelled",
       "localizations" : {
@@ -204,8 +216,13 @@
         }
       }
     },
+    "Get Started" : {
+      "comment" : "Welcome screen action button",
+      "extractionState" : "manual"
+    },
     "Hello [%@](https://skip.tools)!" : {
       "comment" : "Welcome tab contents",
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -531,6 +548,7 @@
     },
     "Welcome" : {
       "comment" : "Tab bar item title for the Welcome tab",
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {

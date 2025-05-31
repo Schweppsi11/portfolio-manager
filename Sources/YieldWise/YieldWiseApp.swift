@@ -20,6 +20,17 @@ public struct YieldWiseRootView : View {
     }
 }
 
+struct ContentView: View {
+    @AppStorage("hasSeenWelcomeScreen") var hasSeenWelcomeScreen: Bool = false
+    var body: some View {
+        YWMainScreen()
+            .opacity(hasSeenWelcomeScreen ? 1.0 : 0.0)
+            .fullScreenCover(isPresented: .constant(!hasSeenWelcomeScreen)) {
+                YWWelcomeView()
+            }
+    }
+}
+
 /// Global application delegate functions.
 ///
 /// These functions can update a shared observable object to communicate app state changes to interested views.
